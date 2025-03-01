@@ -9,6 +9,7 @@ from fastapi.websockets import WebSocketDisconnect
 from twilio.twiml.voice_response import VoiceResponse, Connect, Say, Stream
 from dotenv import load_dotenv
 load_dotenv()
+
 # Configuration
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY') # requires OpenAI Realtime API Access
 PORT = int(os.getenv('PORT', 5050))
@@ -82,7 +83,7 @@ async def handle_media_stream(websocket: WebSocket):
                 if openai_ws.open:
                     await openai_ws.close()
         async def send_to_twilio():
-           """Receive events from the OpenAI Realtime API, send audio back to Twilio."""
+            """Receive events from the OpenAI Realtime API, send audio back to Twilio."""
             nonlocal stream_sid
             try:
                 async for openai_message in openai_ws:
@@ -108,7 +109,7 @@ async def handle_media_stream(websocket: WebSocket):
             except Exception as e:
                 print(f"Error in send_to_twilio: {e}")
         await asyncio.gather(receive_from_twilio(), send_to_twilio())
-
+    
 async def send_session_update(openai_ws):
     """Send session update to OpenAI WebSocket."""
     session_update = {
@@ -125,7 +126,6 @@ async def send_session_update(openai_ws):
     }
     print('Sending session update:', json.dumps(session_update))
     await openai_ws.send(json.dumps(session_update))
-
 
 if __name__ == "__main__":
     import uvicorn
