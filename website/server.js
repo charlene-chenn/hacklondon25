@@ -49,7 +49,8 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: hashedPassword
+        password: hashedPassword,
+        language: req.body.language
       })
       await newUser.save()
       res.redirect("/login")
