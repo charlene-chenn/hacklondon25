@@ -12,7 +12,6 @@ from twilio.twiml.voice_response import Connect, Dial, VoiceResponse
 
 from env import *
 
-
 app = FastAPI()
 
 

@@ -5,12 +5,8 @@ from twilio.rest import Client
 
 from env import *
 
-load_dotenv()
-
-print("TWILIO_ACCOUNT_SID:", os.getenv("TWILIO_ACCOUNT_SID"))
-print("TWILIO_AUTH_TOKEN:", os.getenv("TWILIO_AUTH_TOKEN"))
-client = Client(os.getenv("TWILIO_ACCOUNT_SID"),
-                os.getenv("TWILIO_AUTH_TOKEN"))
+client = Client("xxx",
+                "xxx")
 
 
 def call(from_num, to_num):
