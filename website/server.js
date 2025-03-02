@@ -23,6 +23,8 @@ mongoose.connect("mongodb+srv://danilakozlov204:S9S51a8z0tGUtAHP@huhai.vb76k.mon
 
 initializePassport(passport)
 
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
 
 app.use(express.urlencoded({extended: false}))
 app.use(flash())
