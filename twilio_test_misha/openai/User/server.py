@@ -18,7 +18,7 @@ async def handle_conference(request: Request):
 
     # Call the callee number
     dial = Dial()
-    dial.conference("TranslatorConference")
+    dial.conference("TranslatorConference", end_conference_on_exit=True)
     response.append(dial)
 
     # Add OpenAI translator to the call
