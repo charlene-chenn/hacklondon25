@@ -24,4 +24,4 @@ LOG_EVENT_TYPES = [
 
 MODEL_TEMPERATURE = 0.8
 
-SERVER_URL = "https://d538-144-82-8-234.ngrok-free.app"
+SERVER_URL = "https://2047-144-82-8-121.ngrok-free.app"
