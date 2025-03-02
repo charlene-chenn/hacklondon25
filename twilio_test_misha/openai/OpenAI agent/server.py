@@ -15,8 +15,8 @@ from env import *
 app = FastAPI()
 
 
-@app.route("/incoming-call", methods=["GET", "POST"])
-async def incoming_call(request: Request):
+@app.route("/openai-call", methods=["GET", "POST"])
+async def handle_openai_call(request: Request):
     response = VoiceResponse()
 
     # Add OpenAI translator to the call
@@ -152,7 +152,7 @@ async def send_session_update(openai_ws):
     await openai_ws.send(json.dumps(session_update))
 
 if __name__ == "__main__":
-    PORT = int(os.getenv("PORT", 8081))
+    PORT = int(os.getenv("PORT", 8080))
 
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=PORT)
