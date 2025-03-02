@@ -55,7 +55,7 @@ app.get("/", (req, resp) => {
 
     resp.send("App is Working");
     // You can check backend is working or not by 
-    // entering http://loacalhost:5001
+    // entering http://localhost:5001
     
     // If you see App is working means
     // backend working properly
@@ -73,9 +73,8 @@ app.post("/register", async (req, resp) => {
         } else {
             console.log("User already register");
         }
-
     } catch (e) {
-        resp.send("Something Went Wrong");
+        resp.status(500).send("Something Went Wrong");
     }
 });
 
@@ -88,7 +87,7 @@ app.post("/login", async (req, resp) => {
             resp.send("Invalid credentials");
         }
     } catch (e) {
-        resp.send("Something Went Wrong");
+        resp.status(500).send("Something Went Wrong");
     }
 });
 app.listen(5001);
