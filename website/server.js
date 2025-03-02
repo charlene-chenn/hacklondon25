@@ -15,7 +15,7 @@ const methodOverride = require("method-override")
 const mongoose = require("mongoose")
 const User = require("./models/user")
 
-mongoose.connect("mongodb+srv://danilakozlov204:{DB_PASSWORD}@huhai.vb76k.mongodb.net/?retryWrites=true&w=majority&appName=huhai", { 
+mongoose.connect("mongodb+srv://danilakozlov204:S9S51a8z0tGUtAHP@huhai.vb76k.mongodb.net/?retryWrites=true&w=majority&appName=huhai", { 
   useNewUrlParser: true, 
   useUnifiedTopology: true 
 }).then(() => console.log("Connected to MongoDB"))
@@ -50,7 +50,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
         name: req.body.name,
         email: req.body.email,
         password: hashedPassword,
-        language: req.body.language
       })
       await newUser.save()
       res.redirect("/login")

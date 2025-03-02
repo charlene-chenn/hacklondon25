@@ -1,1 +1,1 @@
-SERVER_URL = "https://d538-144-82-8-234.ngrok-free.app"
+SERVER_URL = "https://3b2e-144-82-8-121.ngrok-free.app"
