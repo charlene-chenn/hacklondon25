@@ -7,17 +7,16 @@ import websockets
 from fastapi import FastAPI, Request, WebSocket
 from fastapi.responses import HTMLResponse
 from fastapi.websockets import WebSocketDisconnect
-from twilio.twiml.voice_response import Connect, VoiceResponse
+from twilio.rest import Client
+from twilio.twiml.voice_response import Connect, Dial, VoiceResponse
 
 from env import *
-
 
 app = FastAPI()
 
 
 @app.route("/openai-call", methods=["GET", "POST"])
 async def handle_openai_call(request: Request):
-    """Handle incoming Twilio calls and connect to OpenAI Realtime API."""
     response = VoiceResponse()
 
     # Add OpenAI translator to the call
@@ -83,7 +82,7 @@ async def handle_media_stream(websocket: WebSocket):
                 async for openai_message in openai_ws:
                     response = json.loads(openai_message)
 
-                    # If we start speaking stop the AI translator's response
+                    # If we start speaking stop the AI translators response
                     if response["type"] == "input_audio_buffer.speech_started":
                         print("Speech Start:", response["type"])
                         # Clear Twilio buffer
@@ -153,7 +152,7 @@ async def send_session_update(openai_ws):
     await openai_ws.send(json.dumps(session_update))
 
 if __name__ == "__main__":
-    PORT = int(os.getenv("PORT", 8081))
+    PORT = int(os.getenv("PORT", 8080))
 
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=PORT)
