@@ -152,7 +152,7 @@ async def send_session_update(openai_ws):
     await openai_ws.send(json.dumps(session_update))
 
 if __name__ == "__main__":
-    PORT = int(os.getenv("PORT", 8080))
+    PORT = int(os.getenv("PORT", 8081))
 
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=PORT)

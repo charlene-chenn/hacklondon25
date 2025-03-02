@@ -32,6 +32,6 @@ LOG_EVENT_TYPES = [
     "input_audio_buffer.speech_started", "session.created"
 ]
 
-SERVER_URL = "https://4921-144-82-8-121.ngrok-free.app"
+SERVER_URL = "https://fcfe-144-82-8-121.ngrok-free.app"
 
 MODEL_TEMPERATURE = 0.8
